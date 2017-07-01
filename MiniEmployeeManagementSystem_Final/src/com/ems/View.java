@@ -4,12 +4,15 @@
  */
 package com.ems;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 import java.util.*;
 
 
 
-public class View {
+public class View implements ActionListener{
 	//declare the swing components
 	JFrame jf;
 	JPanel jp1,jp2,jp3;
@@ -27,37 +30,66 @@ public class View {
 		((JPanel)jf.getContentPane()).setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 		
 		//Initialize JPanel, set up layout for each JPanel and add these components on JPanel
+		//Add action listener on each button
 		jp1 = new JPanel();
 		jp1.setPreferredSize(new Dimension(580,30));
 		jp1.setLayout(new FlowLayout(FlowLayout.LEFT,5,0));
 		jtf1 = new JTextField(31);
 		jtf1.setToolTipText("Please Enter Your First name");
 		jtf1.setPreferredSize(new Dimension(100,30));
-		jbt1 = new JButton(" Find ");
+		jbt1 = new JButton("Search");
 		jbt1.setPreferredSize(new Dimension(100,30));
+		jbt1.setToolTipText("Search Employee");
+		jbt1.addActionListener(this);
+		jbt1.setActionCommand("Search");
 		jp1.add(jtf1);
 		jp1.add(jbt1);
 		
 		jp2 = new JPanel(new FlowLayout(FlowLayout.CENTER,0,5));
 		jp2.setPreferredSize(new Dimension(120,300));
-		jbt2 = new JButton("Add");
+		
+		jbt2 = new JButton("Employee");
 		jbt2.setPreferredSize(new Dimension(120,30));
-		jbt2.setToolTipText("Add New Employee");
-		jbt3 = new JButton("Delete");
+		jbt2.setToolTipText("View All Employee Info");
+		jbt2.addActionListener(this);
+		jbt2.setActionCommand("Employee");
+		
+		jbt3 = new JButton("Department");
 		jbt3.setPreferredSize(new Dimension(120,30));
-		jbt3.setToolTipText("Delete Existing Employee");
-		jbt4 = new JButton("Modify");
+		jbt3.setToolTipText("View All Department Info");
+		jbt3.addActionListener(this);
+		jbt3.setActionCommand("Department");
+		
+		jbt4 = new JButton("Person");
 		jbt4.setPreferredSize(new Dimension(120,30));
-		jbt4.setToolTipText("Modify Data of current Employee");
-		jbt5 = new JButton("Person");
+		jbt4.setToolTipText("View All Person Info");
+		jbt4.addActionListener(this);
+		jbt4.setActionCommand("Person");
+		
+		jbt5 = new JButton("Add");
 		jbt5.setPreferredSize(new Dimension(120,30));
-		jbt5.setToolTipText("View All Person Info");
-		jbt6 = new JButton("Department");
+		jbt5.setToolTipText("Add New Employee");
+		jbt5.addActionListener(this);
+		jbt5.setActionCommand("Add");
+		
+		jbt6 = new JButton("Delete");
 		jbt6.setPreferredSize(new Dimension(120,30));
-		jbt6.setToolTipText("View All Department Info");
+		jbt6.setToolTipText("Delete Existing Employee");
+		jbt6.addActionListener(this);
+		jbt6.setActionCommand("Delete");
+		
+		jbt7 = new JButton("Modify");
+		jbt7.setPreferredSize(new Dimension(120,30));
+		jbt7.setToolTipText("Modify Data of current Employee");
+		jbt7.addActionListener(this);
+		jbt7.setActionCommand("Modify");
+				
 		jbt7 = new JButton("Exit");
 		jbt7.setPreferredSize(new Dimension(120,30));
 		jbt7.setToolTipText("Exit The System");
+		jbt7.addActionListener(this);
+		jbt7.setActionCommand("Exit");
+		
 		jp2.add(jbt2);
 		jp2.add(jbt3);
 		jp2.add(jbt4);
@@ -86,6 +118,29 @@ public class View {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new View();
+	}
+	
+	//Catch the action and pass the SQL query
+	@Override
+	public void actionPerformed(ActionEvent a) {
+		// TODO Auto-generated method stub
+		if(a.getActionCommand().equals("Search")){
+			System.out.println("You click the search");
+		}else if(a.getActionCommand().equals("Employee")){
+			System.out.println("You click the employee");
+		}else if(a.getActionCommand().equals("Person")){
+			System.out.println("You click the person");
+		}else if(a.getActionCommand().equals("Department")){
+			System.out.println("You click the department");
+		}else if(a.getActionCommand().equals("Add")){
+			System.out.println("You click the add");
+		}else if(a.getActionCommand().equals("Delete")){
+			System.out.println("You click the delete");
+		}else if(a.getActionCommand().equals("Modify")){
+			System.out.println("You click the modify");
+		}else if(a.getActionCommand().equals("Exit")){
+			System.out.println("You click the exit");
+		}
 	}
 
 }
