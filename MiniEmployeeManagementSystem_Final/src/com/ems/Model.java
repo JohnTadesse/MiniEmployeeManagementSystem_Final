@@ -17,10 +17,12 @@ public class Model extends AbstractTableModel{
 	//To store the data of each row
 	Vector rowData;
 	//To create the column title
-	Vector<String> columnTitle;
+	Vector columnTitle;
 	
 	public void printTable(String query, String tableName){
-		columnTitle = new Vector<String>();
+//		System.out.println(query);
+//		System.out.println(tableName);
+		columnTitle = new Vector();
 		//Declare a controller object to pass the query to database
 		Controller crl = null;
 		//Fill the title column with column name of employee table  
@@ -39,9 +41,17 @@ public class Model extends AbstractTableModel{
 			try {
 				crl = new Controller();
 				ResultSet rls = crl.getResult(query);
+				System.out.println();
 				while(rls.next()){
 					Vector row = new Vector();
 					row.add(rls.getString(1));
+//					System.out.println(rls.getString(1));
+//					System.out.println(rls.getString(2));
+//					System.out.println(rls.getString(3));
+//					System.out.println(rls.getString(4));
+//					System.out.println(rls.getString(5));
+//					System.out.println(rls.getString(6));
+//					System.out.println(rls.getString(7));
 					row.add(rls.getString(2));
 					row.add(rls.getString(3));
 					row.add(rls.getString(4));
@@ -53,13 +63,11 @@ public class Model extends AbstractTableModel{
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
+				System.out.println("Fetch data failed from employee");
 				e.printStackTrace();
 			} finally{
 				crl.closeDB();
-			}
-			
-			
-			
+			}	
 		}else if(tableName.equals("person")){
 			columnTitle.add("SIN#");
 			columnTitle.add("Gender");
@@ -87,6 +95,7 @@ public class Model extends AbstractTableModel{
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
+				System.out.println("Fetch data failed from person");
 				e.printStackTrace();
 			} finally{
 				crl.closeDB();
@@ -112,6 +121,7 @@ public class Model extends AbstractTableModel{
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
+				System.out.println("Fetch data failed from department");
 				e.printStackTrace();
 			} finally{
 				crl.closeDB();
@@ -126,6 +136,7 @@ public class Model extends AbstractTableModel{
 	//how many columns it should create and display by default.
 	public int getColumnCount() {
 		// TODO Auto-generated method stub
+//		System.out.println(this.columnTitle.size());
 		return this.columnTitle.size();
 	}
 
@@ -138,14 +149,18 @@ public class Model extends AbstractTableModel{
 	@Override
 	public Object getValueAt(int row, int column) {
 		// TODO Auto-generated method stub
+		
 		return ((Vector)this.rowData.get(row)).get(column);
 	}
 
 	@Override
 	public String getColumnName(int column) {
+//		System.out.println(column);
 		// TODO Auto-generated method stub
-		return (String) this.getColumnName(column);
+		//return (String) this.getColumnName(column); fint the bugger here
+		return (String) this.columnTitle.get(column);
 	}
+	
 	
 	
 }
