@@ -4,7 +4,7 @@
  * @author Jeffery
  *
  */
-package com.ems;
+package com.controller;
 
 import java.sql.*;
 

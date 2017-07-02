@@ -2,7 +2,9 @@
  * @author Jeffery
  * This class is to create the view of the database
  */
-package com.ems;
+package com.view;
+
+import com.model.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

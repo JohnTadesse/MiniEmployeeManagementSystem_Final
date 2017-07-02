@@ -4,7 +4,9 @@
  * @author Jeffery
  *
  */
-package com.ems;
+package com.model;
+
+import com.controller.*;
 
 import javax.swing.table.AbstractTableModel;
 
