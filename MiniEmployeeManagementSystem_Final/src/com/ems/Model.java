@@ -41,7 +41,6 @@ public class Model extends AbstractTableModel{
 			try {
 				crl = new Controller();
 				ResultSet rls = crl.getResult(query);
-				System.out.println();
 				while(rls.next()){
 					Vector row = new Vector();
 					row.add(rls.getString(1));

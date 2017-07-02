@@ -131,7 +131,7 @@ public class View implements ActionListener{
 			//Get the first name from text field
 			String firstName = this.jtf1.getText().trim();
 			//Generate query
-			String query = "select * from employee where firstName = ' " + firstName + " ' " ;
+			String query = "select * from employee where firstName = '" + firstName + "'" ;
 			//Create model object to send the query
 			mdl = new Model();
 			mdl.printTable(query, "employee");
