@@ -16,17 +16,17 @@ import java.util.*;
 
 
 
-public class View implements ActionListener{
+public class MainView implements ActionListener{
 	//declare the swing components
 	JFrame jf;
 	JPanel jp1,jp2,jp3;
 	JLabel jl1;
-	JButton jbt1,jbt2,jbt3,jbt4,jbt5,jbt6,jbt7;
+	JButton jbt1,jbt2,jbt3,jbt4,jbt5,jbt6,jbt7,jbt8;
 	JTable jtb1;
 	JScrollPane jsp1;
 	JTextField jtf1;
 	
-	public View(){
+	public MainView(){
 		//Initialize the swing components
 		jf = new JFrame();
 		jf.setLayout(new BorderLayout(10,10));
@@ -76,23 +76,23 @@ public class View implements ActionListener{
 		jbt5.addActionListener(this);
 		jbt5.setActionCommand("add");
 		
-		jbt6 = new JButton("Delete");
+		jbt6 = new JButton("Update");
 		jbt6.setPreferredSize(new Dimension(120,30));
-		jbt6.setToolTipText("Delete Existing Employee");
+		jbt6.setToolTipText("Update Data of current Employee");
 		jbt6.addActionListener(this);
-		jbt6.setActionCommand("delete");
+		jbt6.setActionCommand("update");
 		
-		jbt7 = new JButton("Modify");
+		jbt7 = new JButton("Delete");
 		jbt7.setPreferredSize(new Dimension(120,30));
-		jbt7.setToolTipText("Modify Data of current Employee");
+		jbt7.setToolTipText("Delete Existing Employee");
 		jbt7.addActionListener(this);
-		jbt7.setActionCommand("modify");
-				
-		jbt7 = new JButton("Exit");
-		jbt7.setPreferredSize(new Dimension(120,30));
-		jbt7.setToolTipText("Exit The System");
-		jbt7.addActionListener(this);
-		jbt7.setActionCommand("exit");
+		jbt7.setActionCommand("delete");
+			
+		jbt8 = new JButton("Exit");
+		jbt8.setPreferredSize(new Dimension(120,30));
+		jbt8.setToolTipText("Exit The System");
+		jbt8.addActionListener(this);
+		jbt8.setActionCommand("exit");
 		
 		jp2.add(jbt2);
 		jp2.add(jbt3);
@@ -121,13 +121,14 @@ public class View implements ActionListener{
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		new View();
+		new MainView();
 	}
 	
 	//Catch the action and pass the SQL query
 	@Override
 	public void actionPerformed(ActionEvent a) {
 		Model mdl = null;
+		Dialog dlg = null;
 		// TODO Auto-generated method stub
 		if(a.getActionCommand().equals("search")){
 			//Get the first name from text field
@@ -164,11 +165,11 @@ public class View implements ActionListener{
 			//Update the table
 			jtb1.setModel(mdl);
 		}else if(a.getActionCommand().equals("add")){
-			System.out.println("You click the add");
+			dlg = new Dialog(jf, "Add New Employee", true);
+		}else if(a.getActionCommand().equals("update")){
+			dlg = new Dialog(jf, "Update Current Employee", true);
 		}else if(a.getActionCommand().equals("delete")){
 			System.out.println("You click the delete");
-		}else if(a.getActionCommand().equals("modify")){
-			System.out.println("You click the modify");
 		}else if(a.getActionCommand().equals("exit")){
 			System.out.println("You click the exit");
 		}
