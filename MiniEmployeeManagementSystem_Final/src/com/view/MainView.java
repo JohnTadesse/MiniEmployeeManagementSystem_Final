@@ -137,7 +137,7 @@ public class MainView implements ActionListener{
 			String query = "select * from employee where firstName = '" + firstName + "'" ;
 			//Create model object to send the query
 			mdl = new Model();
-			mdl.printTable(query, "employee");
+			mdl.generateTable(query, "employee");
 			//Update the table
 			jtb1.setModel(mdl);
 		}else if(a.getActionCommand().equals("employee")){
@@ -145,7 +145,7 @@ public class MainView implements ActionListener{
 			String query = "select * from employee";
 			//Create model object to send the query
 			mdl = new Model();
-			mdl.printTable(query, "employee");
+			mdl.generateTable(query, "employee");
 			//Update the table
 			jtb1.setModel(mdl);
 		}else if(a.getActionCommand().equals("person")){
@@ -153,7 +153,7 @@ public class MainView implements ActionListener{
 			String query = "select * from person" ;
 			//Create model object to send the query
 			mdl = new Model();
-			mdl.printTable(query, "person");
+			mdl.generateTable(query, "person");
 			//Update the table
 			jtb1.setModel(mdl);
 		}else if(a.getActionCommand().equals("department")){
@@ -161,7 +161,7 @@ public class MainView implements ActionListener{
 			String query = "select * from department" ;
 			//Create model object to send the query
 			mdl = new Model();
-			mdl.printTable(query, "department");
+			mdl.generateTable(query, "department");
 			//Update the table
 			jtb1.setModel(mdl);
 		}else if(a.getActionCommand().equals("add")){

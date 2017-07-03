@@ -21,7 +21,9 @@ public class Model extends AbstractTableModel{
 	//To create the column title
 	Vector columnTitle;
 	
-	public void printTable(String query, String tableName){
+	//Send query to controller and get the result set from controller
+	//then generate table and wait to be filled by data
+	public void generateTable(String query, String tableName){
 //		System.out.println(query);
 //		System.out.println(tableName);
 		columnTitle = new Vector();
@@ -129,6 +131,12 @@ public class Model extends AbstractTableModel{
 			}
 			
 		}
+	}
+	
+	//Give the query to controller and get result set
+	public boolean getResultSet(){
+		Controller crl = new Controller();
+		return true;
 	}
 
 	@Override
