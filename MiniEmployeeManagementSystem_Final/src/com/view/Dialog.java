@@ -1,5 +1,5 @@
 package com.view;
-
+import com.model.Model;
 import java.awt.BorderLayout;
 import java.awt.Frame;
 import java.awt.GridLayout;
@@ -9,8 +9,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+
 
 public class Dialog extends JDialog implements ActionListener{
 	//Declare the swing components
@@ -175,13 +178,27 @@ public class Dialog extends JDialog implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent a) {
+		Model mdl = null;
 		// TODO Auto-generated method stub
 		if(a.getActionCommand().equals("add")){
-			System.out.println("add clicked");
+			mdl = new Model();
+			String addEmployee = "insert into employee (lastName,firstName,sinNum,"
+					+ "departmentId, position, baseSalary) values (" + "'" + jtf1.getText() +"'"+", " + "'" +jtf2.getText()+"'"
+					+", "+ jtf3.getText() + ", " + jtf4.getText()+", "+ "'" +jtf5.getText()+ "'"+", " + jtf6.getText()+")";
+			String addPerson = "insert into person (sinNum,gender,age,emailAddr, phoneNum) "
+					+ "values (" + jtf3.getText() +", " +"'"+ jtf7.getText()+"'"
+					+", "+ jtf8.getText() + ", " + "'"+jtf9.getText()+"'"+", "+ jtf10.getText() + ")";
+//			mdl.query(addPerson);
+//			mdl.query(addEmployee);
+			if(!mdl.query(addPerson)||!mdl.query(addEmployee)){
+				JOptionPane.showMessageDialog(this, "Add Employee Failed");
+			}
+			
+			this.dispose();
 		}else if(a.getActionCommand().equals("update")){
 			System.out.println("update clicked");
 		}else if(a.getActionCommand().equals("cancel")){
-			System.out.println("cancel clicked");
+			this.dispose();
 		}
 	}
 }

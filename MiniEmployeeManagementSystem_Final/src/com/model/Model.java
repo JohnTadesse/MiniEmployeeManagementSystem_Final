@@ -133,10 +133,10 @@ public class Model extends AbstractTableModel{
 		}
 	}
 	
-	//Give the query to controller and get result set
-	public boolean getResultSet(){
+	//Check if add, update and delete operation successfully
+	public boolean query(String query){
 		Controller crl = new Controller();
-		return true;
+		return crl.operateDB(query);
 	}
 
 	@Override
