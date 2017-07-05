@@ -34,9 +34,13 @@ public class Model extends AbstractTableModel{
 			columnTitle.add("EmployeeId");
 			columnTitle.add("LastName");
 			columnTitle.add("FirstName");
+			columnTitle.add("Gender");
+			columnTitle.add("Age");
 			columnTitle.add("SIN#");
 			columnTitle.add("DepartmentId");
 			columnTitle.add("Position");
+			columnTitle.add("EmailAddr");
+			columnTitle.add("Phone#");
 			columnTitle.add("BaseSalary");
 			//Initialize a rowData vector to store data of row
 			rowData = new Vector();
@@ -55,12 +59,20 @@ public class Model extends AbstractTableModel{
 //					System.out.println(rls.getString(5));
 //					System.out.println(rls.getString(6));
 //					System.out.println(rls.getString(7));
+//					System.out.println(rls.getString(8));
+//					System.out.println(rls.getString(9));
+//					System.out.println(rls.getString(10));
+//					System.out.println(rls.getString(11));
 					row.add(rls.getString(2));
 					row.add(rls.getString(3));
 					row.add(rls.getString(4));
 					row.add(rls.getString(5));
 					row.add(rls.getString(6));
 					row.add(rls.getString(7));
+					row.add(rls.getString(8));
+					row.add(rls.getString(9));
+					row.add(rls.getString(10));
+					row.add(rls.getString(11));
 					
 					rowData.add(row);
 				}
@@ -71,39 +83,6 @@ public class Model extends AbstractTableModel{
 			} finally{
 				crl.closeDB();
 			}	
-		}else if(tableName.equals("person")){
-			columnTitle.add("SIN#");
-			columnTitle.add("Gender");
-			columnTitle.add("Age");
-			columnTitle.add("Email");
-			columnTitle.add("Phone#");
-
-			
-			rowData = new Vector();
-
-			//Fill each row with data fetched from database
-			try {
-				crl = new Controller();
-				ResultSet rls = crl.getResult(query);
-				while(rls.next()){
-					Vector row = new Vector();
-					row.add(rls.getString(1));
-					row.add(rls.getString(2));
-					row.add(rls.getString(3));
-					row.add(rls.getString(4));
-					row.add(rls.getString(5));
-
-					
-					rowData.add(row);
-				}
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				System.out.println("Fetch data failed from person");
-				e.printStackTrace();
-			} finally{
-				crl.closeDB();
-			}
-			
 		}else if(tableName.equals("department")){
 			columnTitle.add("DepartmentId");
 			columnTitle.add("DepartmentName");

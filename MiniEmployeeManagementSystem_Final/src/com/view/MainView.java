@@ -65,35 +65,29 @@ public class MainView implements ActionListener{
 		jbt3.addActionListener(this);
 		jbt3.setActionCommand("department");
 		
-		jbt4 = new JButton("Person");
+		jbt4 = new JButton("Add");
 		jbt4.setPreferredSize(new Dimension(120,30));
-		jbt4.setToolTipText("View All Person Info");
+		jbt4.setToolTipText("Add New Employee");
 		jbt4.addActionListener(this);
-		jbt4.setActionCommand("person");
+		jbt4.setActionCommand("add");
 		
-		jbt5 = new JButton("Add");
+		jbt5 = new JButton("Update");
 		jbt5.setPreferredSize(new Dimension(120,30));
-		jbt5.setToolTipText("Add New Employee");
+		jbt5.setToolTipText("Update Data of current Employee");
 		jbt5.addActionListener(this);
-		jbt5.setActionCommand("add");
+		jbt5.setActionCommand("update");
 		
-		jbt6 = new JButton("Update");
+		jbt6 = new JButton("Delete");
 		jbt6.setPreferredSize(new Dimension(120,30));
-		jbt6.setToolTipText("Update Data of current Employee");
+		jbt6.setToolTipText("Delete Existing Employee");
 		jbt6.addActionListener(this);
-		jbt6.setActionCommand("update");
-		
-		jbt7 = new JButton("Delete");
-		jbt7.setPreferredSize(new Dimension(120,30));
-		jbt7.setToolTipText("Delete Existing Employee");
-		jbt7.addActionListener(this);
-		jbt7.setActionCommand("delete");
+		jbt6.setActionCommand("delete");
 			
-		jbt8 = new JButton("Exit");
-		jbt8.setPreferredSize(new Dimension(120,30));
-		jbt8.setToolTipText("Exit The System");
-		jbt8.addActionListener(this);
-		jbt8.setActionCommand("exit");
+		jbt7 = new JButton("Exit");
+		jbt7.setPreferredSize(new Dimension(120,30));
+		jbt7.setToolTipText("Exit The System");
+		jbt7.addActionListener(this);
+		jbt7.setActionCommand("exit");
 		
 		jp2.add(jbt2);
 		jp2.add(jbt3);
@@ -149,14 +143,6 @@ public class MainView implements ActionListener{
 			mdl.generateTable(query, "employee");
 			//Update the table
 			jtb1.setModel(mdl);
-		}else if(a.getActionCommand().equals("person")){
-			//Generate query
-			String query = "select * from person" ;
-			//Create model object to send the query
-			mdl = new Model();
-			mdl.generateTable(query, "person");
-			//Update the table
-			jtb1.setModel(mdl);
 		}else if(a.getActionCommand().equals("department")){
 			//Generate query
 			String query = "select * from department" ;
@@ -181,7 +167,6 @@ public class MainView implements ActionListener{
 				JOptionPane.showMessageDialog(null, "Please Select A Row");
 				return;
 			}
-			System.out.println("mdl: " + mdl);
 			new Dialog(jf, "Update Current Employee", true,mdl, rowIndex);
 			//After add new employee, update the table by 
 			//calling show all employee again
