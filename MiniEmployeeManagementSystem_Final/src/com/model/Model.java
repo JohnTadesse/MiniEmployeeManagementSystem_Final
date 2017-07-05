@@ -31,17 +31,17 @@ public class Model extends AbstractTableModel{
 		Controller crl = null;
 		//Fill the title column with column name of employee table  
 		if(tableName.equals("employee")){
-			columnTitle.add("EmployeeId");
+			columnTitle.add("Id");
 			columnTitle.add("LastName");
 			columnTitle.add("FirstName");
 			columnTitle.add("Gender");
 			columnTitle.add("Age");
 			columnTitle.add("SIN#");
-			columnTitle.add("DepartmentId");
+			columnTitle.add("Department");
 			columnTitle.add("Position");
 			columnTitle.add("EmailAddr");
 			columnTitle.add("Phone#");
-			columnTitle.add("BaseSalary");
+			columnTitle.add("Salary");
 			//Initialize a rowData vector to store data of row
 			rowData = new Vector();
 			

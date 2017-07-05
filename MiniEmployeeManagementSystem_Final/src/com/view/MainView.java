@@ -38,8 +38,8 @@ public class MainView implements ActionListener{
 		//Add action listener on each button
 		jp1 = new JPanel();
 		jp1.setPreferredSize(new Dimension(580,30));
-		jp1.setLayout(new FlowLayout(FlowLayout.LEFT,5,0));
-		jtf1 = new JTextField(31);
+		jp1.setLayout(new FlowLayout(FlowLayout.LEFT,7,0));
+		jtf1 = new JTextField(65);
 		jtf1.setToolTipText("Please Enter Your First name");
 		jtf1.setPreferredSize(new Dimension(100,30));
 		jbt1 = new JButton("Search");
@@ -99,7 +99,7 @@ public class MainView implements ActionListener{
 		jp3 = new JPanel();
 		jtb1 = new JTable();
 		jsp1 = new JScrollPane(jtb1);
-		jsp1.setPreferredSize(new Dimension(450,280));
+		jsp1.setPreferredSize(new Dimension(830,280));
 		jp3.add(jsp1);
 		
 		//Here using the border layout for the JFrame and add all JPanel on JFrame
@@ -108,7 +108,7 @@ public class MainView implements ActionListener{
 		jf.add(jp3,"West");
 		
 		jf.setTitle("Employee Management System");
-		jf.setSize(620,400);
+		jf.setSize(1000,400);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jf.setVisible(true);
 		
@@ -148,10 +148,10 @@ public class MainView implements ActionListener{
 			//Update the table
 			jtb1.setModel(mdl);
 		}else if(a.getActionCommand().equals("department")){
-			//department table are not editable so we hide those buttons
-			jbt3.setVisible(false);
-			jbt4.setVisible(false);
-			jbt5.setVisible(false);
+			//department table are not editable so we disable those buttons
+			this.jbt4.setEnabled(false);
+			this.jbt5.setEnabled(false);
+			this.jbt6.setEnabled(false);
 			//Generate query
 			String query = "select * from department" ;
 			//Create model object to send the query
@@ -176,14 +176,28 @@ public class MainView implements ActionListener{
 				return;
 			}
 			new Dialog(jf, "Update Current Employee", true,mdl, rowIndex);
-			//After add new employee, update the table by 
+			//After update employee, update the table by 
 			//calling show all employee again
 			String query = "select * from employee";
 			mdl = new Model();
 			mdl.generateTable(query, "employee");
 			jtb1.setModel(mdl);
 		}else if(a.getActionCommand().equals("delete")){
-			System.out.println("You click the delete");
+			int rowIndex = this.jtb1.getSelectedRow();
+			if(rowIndex == -1){
+				JOptionPane.showMessageDialog(null, "Please Select A Row");
+				return;
+			}
+			//Get the employee id from selected row
+			String empId = (mdl.getValueAt(rowIndex, 0)).toString();
+			String query = "delete from employee where empId = " + empId;
+			mdl.query(query);
+			//After delete employee, update the table by 
+			//calling show all employee again
+			String resetQuery = "select * from employee";
+			mdl = new Model();
+			mdl.generateTable(resetQuery, "employee");
+			jtb1.setModel(mdl);
 		}else if(a.getActionCommand().equals("exit")){
 			System.exit(0);
 		}
