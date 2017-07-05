@@ -25,6 +25,7 @@ public class MainView implements ActionListener{
 	JTable jtb1;
 	JScrollPane jsp1;
 	JTextField jtf1;
+	Model mdl = null;
 	
 	public MainView(){
 		//Initialize the swing components
@@ -127,7 +128,7 @@ public class MainView implements ActionListener{
 	//Catch the action and pass the SQL query
 	@Override
 	public void actionPerformed(ActionEvent a) {
-		Model mdl = null;
+		
 		Dialog dlg = null;
 		// TODO Auto-generated method stub
 		if(a.getActionCommand().equals("search")){
@@ -166,8 +167,28 @@ public class MainView implements ActionListener{
 			jtb1.setModel(mdl);
 		}else if(a.getActionCommand().equals("add")){
 			dlg = new Dialog(jf, "Add New Employee", true);
+			//After add new employee, update the table by 
+			//calling show all employee again
+			String query = "select * from employee";
+			mdl = new Model();
+			mdl.generateTable(query, "employee");
+			jtb1.setModel(mdl);
 		}else if(a.getActionCommand().equals("update")){
-			dlg = new Dialog(jf, "Update Current Employee", true);
+			//select row from table to update
+			int rowIndex = this.jtb1.getSelectedRow();
+			System.out.println("rowIndex is " + rowIndex);
+			if(rowIndex == -1){
+				JOptionPane.showMessageDialog(null, "Please Select A Row");
+				return;
+			}
+			System.out.println("mdl: " + mdl);
+			new Dialog(jf, "Update Current Employee", true,mdl, rowIndex);
+			//After add new employee, update the table by 
+			//calling show all employee again
+			String query = "select * from employee";
+			mdl = new Model();
+			mdl.generateTable(query, "employee");
+			jtb1.setModel(mdl);
 		}else if(a.getActionCommand().equals("delete")){
 			System.out.println("You click the delete");
 		}else if(a.getActionCommand().equals("exit")){
