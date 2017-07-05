@@ -136,6 +136,10 @@ public class MainView implements ActionListener{
 			//Update the table
 			jtb1.setModel(mdl);
 		}else if(a.getActionCommand().equals("employee")){
+			//employee table is edible so we show those buttons
+			jbt3.setVisible(true);
+			jbt4.setVisible(true);
+			jbt5.setVisible(true);
 			//Generate query
 			String query = "select * from employee";
 			//Create model object to send the query
@@ -144,6 +148,10 @@ public class MainView implements ActionListener{
 			//Update the table
 			jtb1.setModel(mdl);
 		}else if(a.getActionCommand().equals("department")){
+			//department table are not editable so we hide those buttons
+			jbt3.setVisible(false);
+			jbt4.setVisible(false);
+			jbt5.setVisible(false);
 			//Generate query
 			String query = "select * from department" ;
 			//Create model object to send the query
@@ -177,7 +185,7 @@ public class MainView implements ActionListener{
 		}else if(a.getActionCommand().equals("delete")){
 			System.out.println("You click the delete");
 		}else if(a.getActionCommand().equals("exit")){
-			System.out.println("You click the exit");
+			System.exit(0);
 		}
 	}
 
