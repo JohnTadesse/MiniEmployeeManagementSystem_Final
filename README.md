@@ -18,7 +18,7 @@ A Java and MS sql program that simulate companys' employee management system.
 - SQL
 
 ## Before We Start
-1. Install SQL Server Management Studio 2012 [download here](https://www.microsoft.com/en-us/download/details.aspx?id=29062) (remember choose the 	
+1. Install SQL Server Management Studio 2012 [download here](https://github.com/zhenyu0519/MiniEmployeeManagementSystem_Final/blob/master/SharedFiles/miniEMS.sql) (remember choose the 	
 ENU\x64\SQLEXPRWT_x64_ENU.exe version)and open the port 1433 by using SQL Server Configuration Manager. Then create database. Check the   [sql](https://github.com/zhenyu0519/miniEmployeeManagementSystem/blob/master/shared/miniEMS.sql) file.
 2. Connect to Microsoft SQL Server with the JDBC driver need to download JDBC driver and add it to eclipse (Your Project -> Properties -> Java Build Path -> Add External JARs -> JDBC Driver -> Ok. You can either download online or [here](https://github.com/zhenyu0519/MiniEmployeeManagementSystem_Final/blob/master/SharedFiles/sqljdbc4.jar).
 
@@ -29,10 +29,10 @@ ENU\x64\SQLEXPRWT_x64_ENU.exe version)and open the port 1433 by using SQL Server
 4. Run the program
 
 ## Demo
-
+### Demo 1 from eclipse
 ![demo 1](https://github.com/zhenyu0519/MiniEmployeeManagementSystem_Final/blob/master/SharedFiles/miniEMS1.gif)
 
-
+### Demo 2 from ms sql server
 ![demo 1](https://github.com/zhenyu0519/MiniEmployeeManagementSystem_Final/blob/master/SharedFiles/miniEMS2.gif)
 
-
+## Jeffery [github](https://github.com/zhenyu0519)
