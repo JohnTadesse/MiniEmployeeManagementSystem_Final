@@ -30,6 +30,8 @@ public class MainView implements ActionListener{
 	public MainView(){
 		//Initialize the swing components
 		jf = new JFrame();
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		jf.setLocation(dim.width/2, dim.height/2);
 		jf.setLayout(new BorderLayout(10,10));
 		//set the space between JPanel and JFrame
 		((JPanel)jf.getContentPane()).setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
@@ -137,9 +139,9 @@ public class MainView implements ActionListener{
 			jtb1.setModel(mdl);
 		}else if(a.getActionCommand().equals("employee")){
 			//employee table is edible so we show those buttons
-			jbt3.setVisible(true);
-			jbt4.setVisible(true);
-			jbt5.setVisible(true);
+			this.jbt4.setEnabled(true);
+			this.jbt5.setEnabled(true);
+			this.jbt6.setEnabled(true);
 			//Generate query
 			String query = "select * from employee";
 			//Create model object to send the query

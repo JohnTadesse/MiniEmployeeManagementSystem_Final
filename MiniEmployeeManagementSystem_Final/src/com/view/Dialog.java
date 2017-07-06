@@ -1,17 +1,21 @@
 package com.view;
 import com.model.Model;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.EtchedBorder;
 
 
 
@@ -29,18 +33,22 @@ public class Dialog extends JDialog implements ActionListener{
 	//will be blocked
 	public Dialog (Frame owner, String title, boolean modal){
 		super(owner,title,modal);
+		//set the space between each panel
+		this.setLayout(new BorderLayout(10,10));
+		((JPanel)this.getContentPane()).setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 		//Create panel 1 and labels then add all labels to panel 1
 		jp1 = new JPanel();
-		jlb1 = new JLabel("LastName");
-		jlb2 = new JLabel("FirstName");
-		jlb3 = new JLabel("Gender");
-		jlb4 = new JLabel("Age");
-		jlb5 = new JLabel("SIN#");
-		jlb6 = new JLabel("DepartmentId");
-		jlb7 = new JLabel("Position");
-		jlb8 = new JLabel("EmailAddr");
-		jlb9 = new JLabel("Phone#");
-		jlb10 = new JLabel("BaseSalary");
+		jp1.setPreferredSize(new Dimension(100,300));
+		jlb1 = new JLabel("LastName :");
+		jlb2 = new JLabel("FirstName :");
+		jlb3 = new JLabel("Gender :");
+		jlb4 = new JLabel("Age :");
+		jlb5 = new JLabel("SIN# :");
+		jlb6 = new JLabel("DepartmentId :");
+		jlb7 = new JLabel("Position :");
+		jlb8 = new JLabel("EmailAddr :");
+		jlb9 = new JLabel("Phone# :");
+		jlb10 = new JLabel("Salary :");
 		jp1.add(jlb1);
 		jp1.add(jlb2);
 		jp1.add(jlb3);
@@ -80,9 +88,11 @@ public class Dialog extends JDialog implements ActionListener{
 		//then add all buttons to panel 3
 		jp3 = new JPanel();
 		jbt1 = new JButton("Add");
+		jbt1.setPreferredSize(new Dimension(120,30));
 		jbt1.addActionListener(this);
 		jbt1.setActionCommand("add");
 		jbt2 = new JButton("Cancle");
+		jbt2.setPreferredSize(new Dimension(120,30));
 		jbt2.addActionListener(this);
 		jbt2.setActionCommand("cancel");
 		jp3.add(jbt1);
@@ -97,26 +107,29 @@ public class Dialog extends JDialog implements ActionListener{
 		this.add(jp3, BorderLayout.SOUTH);
 		
 		this.setTitle(title);
-		this.setSize(400,300);
+		this.setSize(350,400);
 		this.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
 		this.setVisible(true);
 			
 	}
 	public Dialog (Frame owner, String title, boolean modal, Model mdl, int rowIndex){ 
 		super(owner,title,modal);
+		//set the space between each panel
+		this.setLayout(new BorderLayout(10,10));
+		((JPanel)this.getContentPane()).setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 		//Create panel 1 and labels then add all labels to panel 1
 		jp1 = new JPanel();
-		jlb0 = new JLabel("EmployeeId");
-		jlb1 = new JLabel("LastName");
-		jlb2 = new JLabel("FirstName");
-		jlb3 = new JLabel("Gender");
-		jlb4 = new JLabel("Age");
-		jlb5 = new JLabel("SIN#");
-		jlb6 = new JLabel("Department Id");
-		jlb7 = new JLabel("Position");
-		jlb8 = new JLabel("Email Adress");
-		jlb9 = new JLabel("Phone#");
-		jlb10 = new JLabel("Base Salary");
+		jlb0 = new JLabel("EmployeeId :");
+		jlb1 = new JLabel("LastName :");
+		jlb2 = new JLabel("FirstName :");
+		jlb3 = new JLabel("Gender :");
+		jlb4 = new JLabel("Age :");
+		jlb5 = new JLabel("SIN# :");
+		jlb6 = new JLabel("Department Id :");
+		jlb7 = new JLabel("Position :");
+		jlb8 = new JLabel("Email Adress :");
+		jlb9 = new JLabel("Phone# :");
+		jlb10 = new JLabel("Base Salary :");
 		
 		jp1.add(jlb0);
 		jp1.add(jlb1);
@@ -133,6 +146,7 @@ public class Dialog extends JDialog implements ActionListener{
 		//Create panel 2 and text fields
 		//then add all text fields to panel 2
 		jp2 = new JPanel();
+		jp2.setBorder(BorderFactory.createEtchedBorder());
 		jtf0 = new JTextField();
 		jtf0.setText(mdl.getValueAt(rowIndex, 0).toString());
 		jtf0.setEnabled(false);
@@ -172,9 +186,11 @@ public class Dialog extends JDialog implements ActionListener{
 		//then add all buttons to panel 3
 		jp3 = new JPanel();
 		jbt1 = new JButton("Update");
+		jbt1.setPreferredSize(new Dimension(120,30));
 		jbt1.addActionListener(this);
 		jbt1.setActionCommand("update");
 		jbt2 = new JButton("Cancel");
+		jbt2.setPreferredSize(new Dimension(120,30));
 		jbt2.addActionListener(this);
 		jbt2.setActionCommand("cancel");
 		jp3.add(jbt1);
@@ -189,7 +205,7 @@ public class Dialog extends JDialog implements ActionListener{
 		this.add(jp3, BorderLayout.SOUTH);
 		
 		this.setTitle(title);
-		this.setSize(400,300);
+		this.setSize(350,400);
 		this.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
 		this.setVisible(true);
 	}
@@ -218,7 +234,7 @@ public class Dialog extends JDialog implements ActionListener{
 			String updateEmployee = "update employee set lastName = " + "'" + jtf1.getText() +"'"+ ",firstName = " + "'" +jtf2.getText()+"'"
 					+",gender="+ "'" + jtf3.getText() +"'"+",age =" + jtf4.getText()+ ",sinNum =" + jtf5.getText()+ 
 					",departmentId =" + jtf6.getText() + ",position = " + "'" +jtf7.getText()+ "'"+",emailAddr = " + "'" +jtf8.getText()+ "'"+
-					",phoneNum =" + jtf9.getText()+ ",baseSalary = " + jtf10.getText() + "where empId = " + jtf0.getText();
+					",phoneNum =" + jtf9.getText()+ ",baseSalary = " + jtf10.getText() + " where empId = " + jtf0.getText();
 			System.out.println(updateEmployee);
 
 			if(!mdl.query(updateEmployee)){
