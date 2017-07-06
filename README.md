@@ -35,4 +35,5 @@ ENU\x64\SQLEXPRWT_x64_ENU.exe version)and open the port 1433 by using SQL Server
 ### Demo 2 from ms sql server
 ![demo 1](https://github.com/zhenyu0519/MiniEmployeeManagementSystem_Final/blob/master/SharedFiles/miniEMS2.gif)
 
-## Jeffery [github](https://github.com/zhenyu0519)
+## Auther
+###Jeffery [github](https://github.com/zhenyu0519)
