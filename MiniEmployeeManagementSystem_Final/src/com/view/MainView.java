@@ -39,9 +39,9 @@ public class MainView implements ActionListener{
 		//Initialize JPanel, set up layout for each JPanel and add these components on JPanel
 		//Add action listener on each button
 		jp1 = new JPanel();
-		jp1.setPreferredSize(new Dimension(580,30));
+		jp1.setPreferredSize(new Dimension(600,30));
 		jp1.setLayout(new FlowLayout(FlowLayout.LEFT,7,0));
-		jtf1 = new JTextField(65);
+		jtf1 = new JTextField(48);
 		jtf1.setToolTipText("Please Enter Your First name");
 		jtf1.setPreferredSize(new Dimension(100,30));
 		jbt1 = new JButton("Search");
@@ -101,7 +101,7 @@ public class MainView implements ActionListener{
 		jp3 = new JPanel();
 		jtb1 = new JTable();
 		jsp1 = new JScrollPane(jtb1);
-		jsp1.setPreferredSize(new Dimension(830,280));
+		jsp1.setPreferredSize(new Dimension(640,280));
 		jp3.add(jsp1);
 		
 		//Here using the border layout for the JFrame and add all JPanel on JFrame
@@ -109,8 +109,10 @@ public class MainView implements ActionListener{
 		jf.add(jp2,"East");
 		jf.add(jp3,"West");
 		
+		jf.setResizable(false);
+		jf.setLocationRelativeTo(null);
 		jf.setTitle("Employee Management System");
-		jf.setSize(1000,400);
+		jf.setSize(800,400);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jf.setVisible(true);
 		
@@ -135,8 +137,21 @@ public class MainView implements ActionListener{
 			//Create model object to send the query
 			mdl = new Model();
 			mdl.generateTable(query, "employee");
-			//Update the table
+			int rowCount = mdl.getRowCount();
+			if(rowCount<1){
+				JOptionPane.showMessageDialog(jf, "Not Such Name!");
+				return;
+			}
+			//Update the table and set the size of column
 			jtb1.setModel(mdl);
+			jtb1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+			jtb1.getColumnModel().getColumn(0).setMaxWidth(40);
+			jtb1.getColumnModel().getColumn(3).setMaxWidth(60);
+			jtb1.getColumnModel().getColumn(4).setMaxWidth(50);
+			jtb1.getColumnModel().getColumn(5).setMaxWidth(60);
+			jtb1.getColumnModel().getColumn(6).setMinWidth(100);
+			jtb1.getColumnModel().getColumn(7).setMinWidth(100);
+			jtb1.getColumnModel().getColumn(8).setMinWidth(110);
 		}else if(a.getActionCommand().equals("employee")){
 			//employee table is edible so we show those buttons
 			this.jbt4.setEnabled(true);
@@ -149,6 +164,16 @@ public class MainView implements ActionListener{
 			mdl.generateTable(query, "employee");
 			//Update the table
 			jtb1.setModel(mdl);
+			//Update the table and set the size of column
+			jtb1.setModel(mdl);
+			jtb1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+			jtb1.getColumnModel().getColumn(0).setMaxWidth(40);
+			jtb1.getColumnModel().getColumn(3).setMaxWidth(60);
+			jtb1.getColumnModel().getColumn(4).setMaxWidth(50);
+			jtb1.getColumnModel().getColumn(5).setMaxWidth(60);
+			jtb1.getColumnModel().getColumn(6).setMinWidth(100);
+			jtb1.getColumnModel().getColumn(7).setMinWidth(100);
+			jtb1.getColumnModel().getColumn(8).setMinWidth(110);
 		}else if(a.getActionCommand().equals("department")){
 			//department table are not editable so we disable those buttons
 			this.jbt4.setEnabled(false);
@@ -161,6 +186,8 @@ public class MainView implements ActionListener{
 			mdl.generateTable(query, "department");
 			//Update the table
 			jtb1.setModel(mdl);
+			//auto resize the table because not much content inside the cell
+			jtb1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		}else if(a.getActionCommand().equals("add")){
 			dlg = new Dialog(jf, "Add New Employee", true);
 			//After add new employee, update the table by 

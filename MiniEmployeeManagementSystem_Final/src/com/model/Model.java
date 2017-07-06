@@ -21,6 +21,7 @@ public class Model extends AbstractTableModel{
 	//To create the column title
 	Vector columnTitle;
 	
+	
 	//Send query to controller and get the result set from controller
 	//then generate table and wait to be filled by data
 	public void generateTable(String query, String tableName){
@@ -31,13 +32,13 @@ public class Model extends AbstractTableModel{
 		Controller crl = null;
 		//Fill the title column with column name of employee table  
 		if(tableName.equals("employee")){
-			columnTitle.add("Id");
+			columnTitle.add("ID");
 			columnTitle.add("LastName");
 			columnTitle.add("FirstName");
 			columnTitle.add("Gender");
 			columnTitle.add("Age");
 			columnTitle.add("SIN#");
-			columnTitle.add("Department");
+			columnTitle.add("DepartmentId");
 			columnTitle.add("Position");
 			columnTitle.add("EmailAddr");
 			columnTitle.add("Phone#");

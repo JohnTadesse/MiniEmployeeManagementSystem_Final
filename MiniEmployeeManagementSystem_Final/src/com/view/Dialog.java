@@ -106,6 +106,8 @@ public class Dialog extends JDialog implements ActionListener{
 		this.add(jp2, BorderLayout.CENTER);
 		this.add(jp3, BorderLayout.SOUTH);
 		
+		this.setResizable(false);
+		this.setLocationRelativeTo(null);
 		this.setTitle(title);
 		this.setSize(350,400);
 		this.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
@@ -204,6 +206,8 @@ public class Dialog extends JDialog implements ActionListener{
 		this.add(jp2, BorderLayout.CENTER);
 		this.add(jp3, BorderLayout.SOUTH);
 		
+		this.setResizable(false);
+		this.setLocationRelativeTo(null);
 		this.setTitle(title);
 		this.setSize(350,400);
 		this.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
@@ -226,6 +230,7 @@ public class Dialog extends JDialog implements ActionListener{
 //			mdl.query(addEmployee);
 			if(!mdl.query(addEmployee)){
 				JOptionPane.showMessageDialog(this, "Add Employee Failed");
+				return;
 			}
 			
 			this.dispose();
@@ -239,6 +244,7 @@ public class Dialog extends JDialog implements ActionListener{
 
 			if(!mdl.query(updateEmployee)){
 				JOptionPane.showMessageDialog(this, "Update Employee Failed");
+				return;
 			}
 			this.dispose();
 		}else if(a.getActionCommand().equals("cancel")){
